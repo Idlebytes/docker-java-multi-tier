@@ -1,0 +1,21 @@
+tomcat:
+  build: ./tomcat
+  hostname: appserver
+  ports:
+    - "8080:8080"
+  environment:
+    - DEFAULT_USER=root
+web:
+  build: ./apache
+  hostname: webserver
+  ports:
+    - "81:80"
+  links:
+    - tomcat:tomcat
+  environment:
+    - DEFAULT_USER=root
+    - WEB_PORT=80
+    - APP_PORT=8080
+    - APP_HOST=appserver
+    - WEB_HOST=webserver
+
