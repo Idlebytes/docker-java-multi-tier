@@ -9,7 +9,7 @@ web:
   build: ./apache
   hostname: webserver
   ports:
-    - "81:80"
+    - "80:80"
   links:
     - tomcat:tomcat
   environment:
